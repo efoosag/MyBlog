@@ -1,24 +1,61 @@
-# README
+# MyBlog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> This project aim at building a blog site using Ruby on Rails
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- RUBY ON RAILS
 
-* System dependencies
+## Live Demo (Not available)
 
-* Configuration
+[Live Demo Link](https://livedemo.com)
 
-* Database creation
+## Getting Started
 
-* Database initialization
+- ![](https://img.shields.io/badge/Github-blueviolet)
+- ![](https://img.shields.io/badge/Ruby-red)
+- ![](https://img.shields.io/badge/Rails-green)
 
-* How to run the test suite
+**instructions on setting up your project locally.**
 
-* Services (job queues, cache servers, search engines, etc.)
+To get a local copy up and running follow these simple example steps.
 
-* Deployment instructions
+### Prerequisites
 
-* ...
+**Computer**
+
+### Setup
+
+**clone this repo `https://github.com/efoosag/MyBlog.git`**
+
+### Install
+
+- Ruby
+- Rails
+- Postgresql
+
+## Authors
+
+👤 **Victor Osagie**
+
+- GitHub: [@efoosag](https://github.com/efoosag)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
