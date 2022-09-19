@@ -11,7 +11,7 @@ AllCops:
 Layout/EndOfLine:
   Enabled: False
 Layout/LineLength:
-  Max: 120
+  Max: 130
 Metrics/MethodLength:
   Max: 20
 Metrics/AbcSize:
@@ -20,7 +20,7 @@ Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
   AllowedMethods: ['describe']
-  Max: 30
+  Max: 50
 
 Style/Documentation:
   Enabled: false
