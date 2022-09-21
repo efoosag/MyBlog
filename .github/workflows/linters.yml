@@ -1,55 +1,44 @@
-RUBY_VERSION: 3.1.2
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
-  POSTGRES_DB: myblog
+name: Linters
 
-name: Rails tests
-on: [push,pull_request]
+on: pull_request
+
+env:
+  FORCE_COLOR: 1
+
 jobs:
-  rubocop-test:
+  rubocop:
     name: Rubocop
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install Rubocop
-        run: gem install rubocop
-      - name: Check code
-        run: rubocop
-  rspec-test:
-    name: RSpec
-    needs: rubocop-test
-    runs-on: ubuntu-18.04
-    services:
-      postgres:
-        image: postgres:latest
-        ports:
-        - 5432:5432
-        env:
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          ruby-version: 3.1.x
+      - name: Setup Rubocop
+        run: |
+          gem install --no-document rubocop -v '>= 1.0, < 2.0' # https://docs.rubocop.org/en/stable/installation/
+          [ -f .rubocop.yml ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.rubocop.yml
+      - name: Rubocop Report
+        run: rubocop --color
+  stylelint:
+    name: Stylelint
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install postgres client
-        run: sudo apt-get install libpq-dev
-      - name: Install dependencies
+          node-version: '12.x'
+      - name: Setup Stylelint
         run: |
-          gem install bundler
-          bundler install
-      - name: Create database
+          npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
+          [ -f .stylelintrc.json ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.stylelintrc.json
+      - name: Stylelint Report
+        run: npx stylelint "**/*.{css,scss}"
+  nodechecker:
+    name: node_modules checker
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check node_modules existence
         run: |
-          bundler exec rails db:create RAILS_ENV=test
-          bundler exec rails db:migrate RAILS_ENV=test
-      - name: Run tests
-        run: bundler exec rake
-      - name: Upload coverage results    
-        uses: actions/upload-artifact@master
-        if: always()
-        with:
-          name: coverage-report
-          path: coverage
+          if [ -d "node_modules/" ]; then echo -e "\e[1;31mThe node_modules/ folder was pushed to the repo. Please remove it from the GitHub repository and try again."; echo -e "\e[1;32mYou can set up a .gitignore file with this folder included on it to prevent this from happening in the future." && exit 1; fi
