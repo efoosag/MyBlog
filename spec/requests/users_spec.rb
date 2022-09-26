@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :request do
   describe 'GET /index' do
-    before(:example) { get '/users'}
+    before(:example) { get '/users' }
 
     it 'Response Status To Be 200' do
       expect(response).to have_http_status(200)
@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :request do
   end
 
   describe 'GET /show' do
-    before(:example) { get '/users/1'}
+    before(:example) { get '/users/1' }
 
     it 'Response Status To Be 200' do
       expect(response).to have_http_status(200)
