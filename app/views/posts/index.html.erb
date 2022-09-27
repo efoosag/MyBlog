@@ -1,3 +1,27 @@
-<h1>Index Page For Posts</h1>
+<h1>Display of All Posts of A Particular</h1>
 
+<%= render 'users/user' %>
+<% @posts.each do |post| %>
+  <div class='post'>
+   <br>
+   <%= link_to  post.title, user_post_path(@user, post.id)  %>
 
+   <br>
+   <p><%= post.text %></p>
+   <span class='counter'>
+   <span>Comments: </span><%= post.comments_counter %>
+   <br>
+   <span>, Likes: </span><%= post.likes_counter %>
+   </span>
+   <br>
+ </div>
+ <div class='comment'>
+   <% post.five_most_recent_comments.each do |comment| %>
+    <span><%= comment.user.name%></span>
+    <span><%= comment.text%></span>
+    <br>
+    
+   <% end %>
+ </div>
+<% end %>
+<button>Pagination</button>

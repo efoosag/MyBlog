@@ -1,0 +1,62 @@
+.user {
+  display: flex;
+  gap: 10px;
+  margin: 20px;
+}
+
+.user-content {
+  border: 2px solid black;
+  width: 80%;
+  gap: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.counter {
+  display: flex;
+  align-items: end;
+}
+
+.username {
+  display: flex;
+  font-size: 30px;
+  align-self: center;
+}
+
+.bio {
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px;
+}
+
+.post {
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px;
+}
+
+.comment {
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px;
+  margin-bottom: 30px;
+}
+
+button {
+  margin-left: 45%;
+  padding: 10px;
+}
+
+p {
+  font-size: 10px;
+}
+
+span {
+  font-size: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(28, 4, 117);
+}
