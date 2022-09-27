@@ -1,0 +1,8 @@
+<div class='user'>
+  <%= image_tag(@user.photo, :size => "150x150") %>
+  <div class='user-content'>
+    <%= @user.name %>
+    <span class='counter'>Numeber of posts: <%= @user.post_counter %></span>
+  </div>
+  <br>
+</div>

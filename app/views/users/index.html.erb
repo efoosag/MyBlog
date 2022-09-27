@@ -1,1 +1,16 @@
-<h1>Index Page For Users</h1>
+<h1>Dispaly of All Users</h1>
+
+<% @users.each do |user| %>
+  <div class='user'>
+  
+  <%= image_tag(user.photo, :size => "150x150") %>
+    <div class='user-content'>
+
+      <%= link_to  user.name, user_path(user.id)  %>
+
+      <span class='counter'>Number of posts: <%= user.post_counter %></span>
+    </div>
+  </div>
+
+  <br>
+<% end %>
