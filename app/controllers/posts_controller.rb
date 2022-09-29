@@ -15,6 +15,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def post_params
+    params.require(:post).permit(:title, :text).merge(user: current_user, comments_counter: 0, likes_counter: 0)
+  end
   
   def create   
     respond_to do |format|
@@ -29,9 +32,5 @@ class PostsController < ApplicationController
         end 
       end 
     end
-  end
-
-  def post_params
-    params.require(:post).permit(:title, :text).merge(user: current_user)
   end
 end
