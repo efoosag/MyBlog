@@ -1,4 +1,4 @@
-<h1>Details of A Specific Post A Particular User</h1>
+<h1>Details of A Specific Post For A Particular User</h1>
 
 <div class='post'>
 <span><%= @post.title  %></span><span> by </span><span><%= @post.user.name  %></span>
@@ -17,6 +17,10 @@
     <br>
 <% end %>
 </div>
-<button><%= link_to  "Add Comment", new_user_post_comment_path(@post.user, @post)  %></button>
-<%= render partial: 'likes/form' %>
+<div class='like-container'>
+
+    <button><%= link_to  "Add Comment", new_user_post_comment_path(@post.user, @post)  %></button>
+    <div class'like'><%= render partial: 'likes/form' %></div>
+    
+</div>
 

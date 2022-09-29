@@ -60,3 +60,27 @@ a {
   text-decoration: none;
   color: rgb(28, 4, 117);
 }
+
+.like-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.like {
+  color: blue;
+}
+
+input {
+  height: 30px;
+  width: 60%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left: 5px;
+  margin-bottom: 2px;
+}
