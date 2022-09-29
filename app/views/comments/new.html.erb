@@ -1,0 +1,13 @@
+<h2>New Comment</h2>
+<%= form_with model: comment, url: user_post_comments_url, method: :post do |fm| %>
+  <div class='form'>
+    <div>
+      <%= fm.label :text %><br>
+      <%= fm.text_field :text %>
+    </div>
+  
+    <div>
+    <%= fm.submit "Add Comment" %>
+    </div>
+  </div>
+ <% end %>

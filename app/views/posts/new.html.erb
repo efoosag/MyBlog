@@ -1,0 +1,16 @@
+<h1>Add Post</h1>
+<%= form_with model: @post, url: user_posts_path, method: :post, local: true, scope: :post do |fm| %>
+  <div>
+    <div>
+      <%= fm.label :title %><br>
+      <%= fm.text_field :title %>
+    </div>
+    <div>
+      <%= fm.label :text %><br>
+      <%= fm.text_field :text %>
+    </div>
+    <div>
+      <%= fm.submit "Add Post" %>
+    </div>
+  </div>  
+<% end %>
