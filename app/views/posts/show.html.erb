@@ -11,7 +11,7 @@
 <p><%= @post.text %></p>
 </div>
 <div class='comment'>
-<% @post.comments.each do |comment| %>
+<% @post.comments.includes(:user).each do |comment| %>
     <span><%= comment.user.name %>:</span>
     <span><%= comment.text%></span>
     <br>
