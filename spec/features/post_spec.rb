@@ -1,6 +1,5 @@
 require 'rails_helper'
-
-RSpec.feature 'Posts Index/Show Page', type: :feature do
+RSpec.describe 'Posts Index/Show Page', type: :feature do
   before(:all) do
     @user_one = User.create(id: 3, name: 'Samuel', photo: 'https://avatars.githubusercontent.com/u/101924220?v=4',
                             bio: 'simplest of apps')
