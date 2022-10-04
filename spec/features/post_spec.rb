@@ -3,36 +3,33 @@ require 'rails_helper'
 RSpec.feature "Posts", type: :feature do
   before(:all) do
     @user_one = User.create(id: 3, name: 'Samuel', photo: 'https://avatars.githubusercontent.com/u/101924220?v=4',
-    bio: 'simplest of apps')
-    
-  
+                            bio: 'simplest of apps')
+
     @post1 = Post.create(id: 26, title: 'Test Form Creation', text: 'Very Good Jo', user: @user_one)
     @post2 = Post.create(id: 25, title: 'Happy', text: 'Very Good Jo', user: @user_one)
-    @post3 = Post.create(id: 24, title: 'Things Fall Apart', text: 'Very Good Jo', user: @user_one)   
+    @post3 = Post.create(id: 24, title: 'Things Fall Apart', text: 'Very Good Jo', user: @user_one)
 
-     
     @comment1 = Comment.create(post: @post1, user: @user_one, text: 'Hi Tom!')
     @comment2 = Comment.create(post: @post1, user: @user_one,
-                                     text: 'Hola Tom!')
+                               text: 'Hola Tom!')
     @comment3 = Comment.create(post: @post1, user: @user_one,
-                                    text: 'Salam Tom!')
+                               text: 'Salam Tom!')
     @comment4 = Comment.create(post: @post1, user: @user_one,
-                                     text: 'Bonjour Tom!')
+                               text: 'Bonjour Tom!')
     @comment5 = Comment.create(post: @post1, user: @user_one,
-                                    text: 'Hello Tom!')
+                               text: 'Hello Tom!')
 
     visit user_posts_path(@user_one)
   end
 
   describe 'Post index page' do
-    
     it 'shows the username' do
       expect(page).to have_content @user_one.name
     end
 
     it 'shows number of posts of user has written' do
       visit user_posts_path(@user_one)
-      expect(page).to have_content('Number of posts: 6')     
+      expect(page).to have_content('Number of posts: 6')
     end
 
     it 'shows the post\'s title' do
@@ -40,7 +37,6 @@ RSpec.feature "Posts", type: :feature do
       expect(page).to have_content @post1.title
       expect(page).to have_content @post2.title
       expect(page).to have_content @post3.title
-      
     end
 
     it 'shows some of the post\'s body' do
@@ -48,7 +44,6 @@ RSpec.feature "Posts", type: :feature do
       expect(page).to have_content 'Sad'
       expect(page).to have_content 'Happy'
       expect(page).to have_content 'Hello'
-       
     end
 
     it 'shows the first comments on a post' do
@@ -70,7 +65,6 @@ RSpec.feature "Posts", type: :feature do
       click_link @post2.title
       expect(page).to have_current_path user_post_path(@user_one, @post2)
     end
-   
   end
 
   describe 'Post show page' do
@@ -104,7 +98,6 @@ RSpec.feature "Posts", type: :feature do
       expect(page).to have_content @comment1.user.name
       expect(page).to have_content @comment2.user.name
       expect(page).to have_content @comment3.user.name
-      
     end
 
     it 'shows the comment each commentor left' do
@@ -112,6 +105,6 @@ RSpec.feature "Posts", type: :feature do
       expect(page).to have_content @comment1.text
       expect(page).to have_content @comment2.text
       expect(page).to have_content @comment3.text
-    end     
-  end 
+    end
+  end
 end

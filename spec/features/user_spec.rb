@@ -3,21 +3,19 @@ require 'rails_helper'
 RSpec.feature "Users Index/Show Page", type: :feature do
   before(:all) do
     @user_one = User.create(id: 3, name: 'Samuel', photo: 'https://avatars.githubusercontent.com/u/101924220?v=4',
-    bio: 'simplest of apps')
-    
+                            bio: 'simplest of apps')
+
     visit users_path
 
     @post1 = Post.create(id: 26, title: 'Test Form Creation', text: 'Die Another Day', user: @user_one)
     @post2 = Post.create(id: 25, title: 'Happy', text: 'Die Another Day', user: @user_one)
-    @post3 = Post.create(id: 24, title: 'Things Fall Apart', text: 'Die Another Day', user: @user_one)   
+    @post3 = Post.create(id: 24, title: 'Things Fall Apart', text: 'Die Another Day', user: @user_one)
 
-     
-    # visit user_path(@user_one.id)  
+    # visit user_path(@user_one.id)
   end
 
   describe 'User index page' do
     it 'Should show the username of all users ' do
-      
       expect(page).to have_content('Tom')
       expect(page).to have_content('Lilly')
       expect(page).to have_content('Samuel')
@@ -32,7 +30,7 @@ RSpec.feature "Users Index/Show Page", type: :feature do
       visit users_path
       expect(page).to have_content('Number of posts: 6')
     end
-    
+
     it 'Should redirect me to that user\'s posts page. ' do
       visit users_path
       click_on @user_one.name
@@ -40,8 +38,7 @@ RSpec.feature "Users Index/Show Page", type: :feature do
     end
   end
 
-  describe 'User show page' do    
-
+  describe 'User show page' do
     it 'Should show the profile picture' do
       visit user_path(@user_one)
       expect(page).to have_selector("img[src='#{@user_one.photo}']")
@@ -61,7 +58,7 @@ RSpec.feature "Users Index/Show Page", type: :feature do
       visit user_path(@user_one)
       expect(page).to have_content(@user_one.bio)
     end
-   
+
     it 'shows the user\'s first 3 posts' do
       visit user_path(@user_one)
       expect(page).to have_content @post1.title
@@ -85,6 +82,5 @@ RSpec.feature "Users Index/Show Page", type: :feature do
       click_link 'See all posts'
       expect(page).to have_current_path user_posts_path(@user_one)
     end
-
-  end  
+  end
 end
