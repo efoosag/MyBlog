@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :request do
   describe 'GET /index' do
-    before(:example) { get '/users/1/posts' }
+    before(:example) { get '/users/3/posts' }
 
     it 'Response Status To Be 200' do
       expect(response).to have_http_status(200)
@@ -12,7 +12,7 @@ RSpec.describe PostsController, type: :request do
     end
 
     it 'Response Body To Include Correct placeholder' do
-      expect(response.body).to include('Index Page For Posts')
+      expect(response.body).to include('Display of All Posts of A Particular')
     end
   end
   describe 'GET /show' do
@@ -26,7 +26,7 @@ RSpec.describe PostsController, type: :request do
     end
 
     it 'Response Body To Include Correct placeholder' do
-      expect(response.body).to include('Display Page For Post')
+      expect(response.body).to include('Details of A Specific Post For A Particular User')
     end
   end
 end

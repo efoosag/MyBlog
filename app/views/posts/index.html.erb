@@ -16,7 +16,7 @@
    <br>
  </div>
  <div class='comment'>
-   <% post.five_most_recent_comments.each do |comment| %>
+   <% post.five_most_recent_comments.includes(:user).each do |comment| %>
     <span><%= comment.user.name%></span>
     <span><%= comment.text%></span>
     <br>

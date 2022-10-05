@@ -34,6 +34,14 @@ To get a local copy up and running follow these simple example steps.
 - Rails
 - Postgresql
 
+### Testing
+
+To carry out testing,
+
+- clone the repo - git clone https://github.com/efoosag/MyBlog.git
+- move into the repo - cd MyBlog
+- Run rspec
+
 ## Authors
 
 👤 **Victor Osagie**
