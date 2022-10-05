@@ -34,6 +34,10 @@ To get a local copy up and running follow these simple example steps.
 - Rails
 - Postgresql
 
+### Testing
+
+Run rspec/spec/folder_name/file_name
+
 ## Authors
 
 👤 **Victor Osagie**
