@@ -39,8 +39,8 @@ To get a local copy up and running follow these simple example steps.
 To carry out testing,
 
 - clone the repo - git clone https://github.com/efoosag/MyBlog.git
-- move into repo - cd MyBlog
-- Run rspec/spec/folder_name/file_name
+- move into the repo - cd MyBlog
+- Run rspec
 
 ## Authors
 
