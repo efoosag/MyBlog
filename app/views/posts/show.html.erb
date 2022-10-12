@@ -15,12 +15,18 @@
     <span><%= comment.user.name %>:</span>
     <span><%= comment.text%></span>
     <br>
+    <%= button_to 'delete', user_post_comment_path(post_id: @post.id ,id: comment.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
+
 <% end %>
 </div>
 <div class='like-container'>
 
     <button><%= link_to  "Add Comment", new_user_post_comment_path(@post.user, @post)  %></button>
     <div class'like'><%= render partial: 'likes/form' %></div>
+    <%if can? :destroy, @post %>
+    <%=button_to 'Delete post', user_post_path(post_id: @post.id), :method => :delete, data: { confirm: 'Are you sure?' } %>
+    <%end%>
+    
     
 </div>
 

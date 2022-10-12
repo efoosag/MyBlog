@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
@@ -31,6 +33,18 @@ class PostsController < ApplicationController
           render :new, locals: { user: current_user, post: Post.new }
         end
       end
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    @user = current_user
+    @user.post_counter -= 1
+    @user.save
+
+    respond_to do |format|
+      format.html { redirect_to(user_posts_url) }
     end
   end
 end
